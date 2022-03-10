@@ -1,7 +1,7 @@
 namespace UniDubnaSchedule.DAL.Interfaces;
 
-public interface IBaseRepository<T>
+public interface IBaseRepository<T> : IDisposable
 {
-    Task<IEnumerable<T>> GetAll();
+    Task<List<T>> GetAll();
     Task<T?> GetById(int id);
 }

@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniDubnaSchedule.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniDubnaSchedule.DAL", "UniDubnaSchedule.DAL\UniDubnaSchedule.DAL.csproj", "{19AA90A2-3997-46B7-82A7-86C6E80FB67B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniDubnaSchedule.Services", "UniDubnaSchedule.Services\UniDubnaSchedule.Services.csproj", "{35602175-F12E-4D78-ABFE-653289988473}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +34,15 @@ Global
 		{19AA90A2-3997-46B7-82A7-86C6E80FB67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19AA90A2-3997-46B7-82A7-86C6E80FB67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19AA90A2-3997-46B7-82A7-86C6E80FB67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35602175-F12E-4D78-ABFE-653289988473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35602175-F12E-4D78-ABFE-653289988473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35602175-F12E-4D78-ABFE-653289988473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35602175-F12E-4D78-ABFE-653289988473}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{05F7A498-2E93-4E16-B2B4-6DCB4022DD98} = {33B39EA0-D6EE-4B7D-8D66-082561F91FD8}
 		{C422A5AC-BE9F-49A8-A8FD-1279F90135EE} = {938D2D2C-8CE9-46C2-8D1F-6563E622FA1D}
 		{19AA90A2-3997-46B7-82A7-86C6E80FB67B} = {21EC4F66-7E21-43E9-A19E-79FFBE98AF91}
+		{35602175-F12E-4D78-ABFE-653289988473} = {9F6F0D74-55D8-4509-AFDA-7C142D532D83}
 	EndGlobalSection
 EndGlobal

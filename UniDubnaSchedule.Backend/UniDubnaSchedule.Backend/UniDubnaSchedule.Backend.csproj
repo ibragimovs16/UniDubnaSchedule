@@ -1,17 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+      <UserSecretsId>16296517-5e6e-48b7-bdf2-106cb180d02f</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\UniDubnaSchedule.DAL\UniDubnaSchedule.DAL.csproj" />
+      <ProjectReference Include="..\UniDubnaSchedule.Services\UniDubnaSchedule.Services.csproj" />
     </ItemGroup>
 
 </Project>

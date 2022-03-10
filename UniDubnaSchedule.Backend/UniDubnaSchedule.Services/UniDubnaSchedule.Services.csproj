@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.4" />
+      <ProjectReference Include="..\UniDubnaSchedule.DAL\UniDubnaSchedule.DAL.csproj" />
+      <ProjectReference Include="..\UniDubnaSchedule.Domain\UniDubnaSchedule.Domain.csproj" />
     </ItemGroup>
 
 </Project>

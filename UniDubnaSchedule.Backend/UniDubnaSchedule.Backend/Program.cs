@@ -20,7 +20,7 @@ void ConfigureServices(IServiceCollection services)
         .Build();
     
     // Getting the connection string and configuring the database context.
-    var dbConnectionSettings = configuration.GetSection("MsSql").Get<DbConnection>();
+    var dbConnectionSettings = configuration.GetSection("MsSql").Get<DbConnectionModel>();
     services.AddDbContext<ApplicationDbContext>(
         o => o.UseSqlServer(
             dbConnectionSettings.ConnectionString
@@ -40,7 +40,7 @@ void ConfigureApplication(WebApplication application)
         application.UseSwaggerUI();
     }
 
-    application.UseHttpsRedirection();
+    // application.UseHttpsRedirection();
     application.UseAuthorization();
     application.MapControllers();
 }

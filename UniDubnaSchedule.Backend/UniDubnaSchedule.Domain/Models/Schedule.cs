@@ -1,3 +1,4 @@
+using System.Collections;
 using UniDubnaSchedule.Domain.Enums;
 
 namespace UniDubnaSchedule.Domain.Models;
@@ -6,6 +7,7 @@ public class Schedule
 {
     public int Id { get; set; }
     public Faculty Faculty { get; set; }
+    public int Group { get; set; }
     public WeekDay WeekDay { get; set; }
     public int PairNumber { get; set; }
     public int Parity { get; set; }

@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 
 namespace UniDubnaSchedule.Domain.Models.SettingsModels;
 
-public class DbConnection
+public class DbConnectionModel
 {
     public string? DataSource { get; set; }
     public string? InitialCatalog { get; set; }

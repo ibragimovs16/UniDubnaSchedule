@@ -7,6 +7,11 @@ namespace UniDubnaSchedule.Services.Extensions;
 
 public static class ScheduleExtensions
 {
+    /// <summary>
+    /// Extension for converting the model to dto.
+    /// </summary>
+    /// <param name="schedule"><see cref="Schedule" /> type model</param>
+    /// <returns><see cref="ScheduleDto" /> type model</returns>
     public static ScheduleDto AsDto(this Schedule schedule) =>
         new()
         {

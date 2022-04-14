@@ -1,5 +1,8 @@
 namespace UniDubnaSchedule.Domain.Models;
 
+/// <summary>
+/// Model for the Teacher table.
+/// </summary>
 public class Teacher
 {
     public int Id { get; set; }

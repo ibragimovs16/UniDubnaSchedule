@@ -7,6 +7,11 @@ namespace UniDubnaSchedule.Services.Extensions;
 
 public static class JoinedScheduleExtensions
 {
+    /// <summary>
+    /// Extension for converting the model to dto.
+    /// </summary>
+    /// <param name="joinedSchedule"><see cref="JoinedSchedule" /> type model</param>
+    /// <returns><see cref="JoinedScheduleDto" /> type model</returns>
     public static JoinedScheduleDto AsDto(this JoinedSchedule joinedSchedule) =>
         new()
         {

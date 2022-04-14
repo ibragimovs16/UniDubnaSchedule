@@ -1,5 +1,8 @@
 namespace UniDubnaSchedule.Domain.DTOs;
 
+/// <summary>
+/// A schedule model in which all tables from the database are combined.
+/// </summary>
 public class JoinedScheduleDto
 {
     public string Faculty { get; set; } = string.Empty;

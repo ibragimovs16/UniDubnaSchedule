@@ -3,6 +3,9 @@ using UniDubnaSchedule.Domain.Models;
 
 namespace UniDubnaSchedule.DAL;
 
+/// <summary>
+/// Database context class.
+/// </summary>
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}

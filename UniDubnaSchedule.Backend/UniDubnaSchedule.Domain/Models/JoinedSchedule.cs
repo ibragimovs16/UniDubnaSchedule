@@ -2,6 +2,9 @@ using UniDubnaSchedule.Domain.Enums;
 
 namespace UniDubnaSchedule.Domain.Models;
 
+/// <summary>
+/// A schedule model in which all tables from the database are combined.
+/// </summary>
 public class JoinedSchedule
 {
     public Faculty Faculty { get; set; }

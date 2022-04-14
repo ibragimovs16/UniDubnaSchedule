@@ -2,6 +2,9 @@ using Microsoft.Data.SqlClient;
 
 namespace UniDubnaSchedule.Domain.Models.SettingsModels;
 
+/// <summary>
+/// Model of settings for connecting to the database.
+/// </summary>
 public class DbConnectionModel
 {
     public string? DataSource { get; set; }

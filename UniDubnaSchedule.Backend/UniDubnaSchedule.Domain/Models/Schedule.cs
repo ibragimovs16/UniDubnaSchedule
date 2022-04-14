@@ -3,6 +3,9 @@ using UniDubnaSchedule.Domain.Enums;
 
 namespace UniDubnaSchedule.Domain.Models;
 
+/// <summary>
+/// Basic schedule model
+/// </summary>
 public class Schedule
 {
     public int Id { get; set; }

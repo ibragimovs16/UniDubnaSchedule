@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UniDubnaSchedule.Domain.Models;
 
+/// <summary>
+/// Model for the Bells table.
+/// </summary>
 public class BellsSchedule
 {
     [Key]

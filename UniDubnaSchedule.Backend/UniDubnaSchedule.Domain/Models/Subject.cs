@@ -1,5 +1,8 @@
 namespace UniDubnaSchedule.Domain.Models;
 
+/// <summary>
+/// Model for the Subject table.
+/// </summary>
 public class Subject
 {
     public int Id { get; set; }

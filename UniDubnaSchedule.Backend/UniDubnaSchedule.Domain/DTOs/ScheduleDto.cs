@@ -1,5 +1,8 @@
 namespace UniDubnaSchedule.Domain.DTOs;
 
+/// <summary>
+/// Basic schedule model
+/// </summary>
 public class ScheduleDto
 {
     public int Id { get; set; }

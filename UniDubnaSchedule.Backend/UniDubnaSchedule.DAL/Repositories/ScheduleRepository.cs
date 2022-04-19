@@ -17,7 +17,14 @@ public class ScheduleRepository : IScheduleRepository
 
     public async Task<Schedule?> GetByIdAsync(int id) =>
         await _db.Schedule.FirstOrDefaultAsync(sch => sch.Id == id);
-    
+
+    public async Task<int> AddAsync(Schedule data)
+    {
+        var entity = await _db.Schedule.AddAsync(data);
+        await _db.SaveChangesAsync();
+        return entity.Entity.Id;
+    }
+
     public async Task<bool> IsGroupExists(int group) =>
         await _db.Schedule.AnyAsync(s => s.Group == group);
     

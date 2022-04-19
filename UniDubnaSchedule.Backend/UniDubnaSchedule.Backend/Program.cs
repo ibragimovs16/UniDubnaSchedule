@@ -30,6 +30,12 @@ void ConfigureServices(IServiceCollection services)
     // Setting up DI
     services.AddScoped<IScheduleRepository, ScheduleRepository>();
     services.AddScoped<IScheduleService, ScheduleService>();
+    services.AddScoped<IBellsScheduleRepository, BellsScheduleRepository>();
+    services.AddScoped<IBellsScheduleService, BellsScheduleService>();
+    services.AddScoped<ISubjectsRepository, SubjectsRepository>();
+    services.AddScoped<ISubjectsService, SubjectsService>();
+    services.AddScoped<ITeachersRepository, TeacherRepository>();
+    services.AddScoped<ITeacherService, TeacherService>();
 }
 
 void ConfigureApplication(WebApplication application)

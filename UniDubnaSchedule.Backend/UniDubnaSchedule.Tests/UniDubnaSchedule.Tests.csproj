@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\UniDubnaSchedule.DAL\UniDubnaSchedule.DAL.csproj" />
+      <ProjectReference Include="..\UniDubnaSchedule.Services\UniDubnaSchedule.Services.csproj" />
     </ItemGroup>
 
 </Project>

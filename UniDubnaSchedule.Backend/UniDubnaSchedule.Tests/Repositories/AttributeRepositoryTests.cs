@@ -2,7 +2,7 @@ using UniDubnaSchedule.DAL.Repositories;
 using UniDubnaSchedule.Domain.Enums;
 using Xunit;
 
-namespace UniDubnaSchedule.Tests;
+namespace UniDubnaSchedule.Tests.Repositories;
 
 public class AttributeRepositoryTests
 {

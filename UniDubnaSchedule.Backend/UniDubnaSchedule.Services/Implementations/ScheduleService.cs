@@ -13,7 +13,7 @@ public class ScheduleService : IScheduleService
     public ScheduleService(IScheduleRepository repository) =>
         _repository = repository;
 
-    public async Task<BaseResponse<List<JoinedSchedule>>> GetAllJoinedScheduleAsync()
+    public async Task<BaseResponse<List<JoinedSchedule>>> GetAllAsync()
     {
         var joinedSchedule = await _repository.GetAllJoinedScheduleAsync();
         if (joinedSchedule.Count == 0)

@@ -19,7 +19,7 @@ public class ScheduleController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<JoinedScheduleDto>>> GetAllScheduleAsync()
     {
-        var scheduleResponse = await _schedule.GetAllJoinedScheduleAsync();
+        var scheduleResponse = await _schedule.GetAllAsync();
 
         if (scheduleResponse.StatusCode == HttpStatusCode.NotFound)
             return NotFound(scheduleResponse.Description);

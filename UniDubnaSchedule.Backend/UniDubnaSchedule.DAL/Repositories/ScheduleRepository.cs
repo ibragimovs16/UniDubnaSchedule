@@ -5,12 +5,9 @@ using UniDubnaSchedule.Domain.Models;
 
 namespace UniDubnaSchedule.DAL.Repositories;
 
-public class ScheduleRepository : IScheduleRepository
+public class ScheduleRepository : BaseRepository, IScheduleRepository
 {
-    private readonly ApplicationDbContext _db;
-
-    public ScheduleRepository(ApplicationDbContext db) =>
-        _db = db;
+    public ScheduleRepository(ApplicationDbContext db) : base(db) {}
 
     public async Task<List<Schedule>> GetAllAsync() =>
         await _db.Schedule.ToListAsync();
@@ -69,7 +66,7 @@ public class ScheduleRepository : IScheduleRepository
     /// </summary>
     /// <param name="weekDay">Week day</param>
     private bool IsWeekDayCorrect(int weekDay) =>
-        1 <= weekDay && weekDay <= 7;
+        weekDay is >= 1 and <= 7;
     
     /// <summary>
     /// Calculate the parity of the week.
@@ -132,29 +129,4 @@ public class ScheduleRepository : IScheduleRepository
             StartTime = bs.Start,
             EndTime = bs.End
         };
-
-    #region Dispose
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-    
-    private bool _disposed;
-
-    private void Dispose(bool disposing)
-    {
-        if (!_disposed)
-        {
-            if (disposing)
-            {
-                _db.Dispose();
-            }
-        }
-
-        _disposed = true;
-    }
-
-    #endregion
 }

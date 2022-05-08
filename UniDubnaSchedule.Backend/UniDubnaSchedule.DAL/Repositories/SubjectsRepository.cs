@@ -4,12 +4,9 @@ using UniDubnaSchedule.Domain.Models;
 
 namespace UniDubnaSchedule.DAL.Repositories;
 
-public class SubjectsRepository : ISubjectsRepository
+public class SubjectsRepository : BaseRepository, ISubjectsRepository
 {
-    private readonly ApplicationDbContext _db;
-
-    public SubjectsRepository(ApplicationDbContext db) =>
-        _db = db;
+    public SubjectsRepository(ApplicationDbContext db) : base(db) {}
 
     public async Task<List<Subject>> GetAllAsync() =>
         await _db.Subjects.ToListAsync();
@@ -23,29 +20,4 @@ public class SubjectsRepository : ISubjectsRepository
         await _db.SaveChangesAsync();
         return entity.Entity.Id;
     }
-    
-    #region Dispose
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-    
-    private bool _disposed;
-
-    private void Dispose(bool disposing)
-    {
-        if (!_disposed)
-        {
-            if (disposing)
-            {
-                _db.Dispose();
-            }
-        }
-
-        _disposed = true;
-    }
-
-    #endregion
 }

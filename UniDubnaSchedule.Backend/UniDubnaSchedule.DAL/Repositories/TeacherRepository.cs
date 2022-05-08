@@ -1,16 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using UniDubnaSchedule.DAL.Interfaces;
 using UniDubnaSchedule.Domain.Models;
-using UniDubnaSchedule.Domain.Response;
 
 namespace UniDubnaSchedule.DAL.Repositories;
 
-public class TeacherRepository : ITeachersRepository
+public class TeacherRepository : BaseRepository, ITeachersRepository
 {
-    private readonly ApplicationDbContext _db;
-
-    public TeacherRepository(ApplicationDbContext db) =>
-        _db = db;
+    public TeacherRepository(ApplicationDbContext db) : base(db) {}
 
     public async Task<List<Teacher>> GetAllAsync() =>
         await _db.Teachers.ToListAsync();
@@ -27,29 +23,4 @@ public class TeacherRepository : ITeachersRepository
         await _db.SaveChangesAsync();
         return entity.Entity.Id;
     }
-
-    #region Dispose
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-    
-    private bool _disposed;
-
-    private void Dispose(bool disposing)
-    {
-        if (!_disposed)
-        {
-            if (disposing)
-            {
-                _db.Dispose();
-            }
-        }
-
-        _disposed = true;
-    }
-
-    #endregion
 }

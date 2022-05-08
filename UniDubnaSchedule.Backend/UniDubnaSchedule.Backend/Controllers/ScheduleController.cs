@@ -8,7 +8,7 @@ using UniDubnaSchedule.Services.Extensions;
 namespace UniDubnaSchedule.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Api/[controller]")]
 public class ScheduleController : ControllerBase
 {
     private readonly IScheduleService _schedule;

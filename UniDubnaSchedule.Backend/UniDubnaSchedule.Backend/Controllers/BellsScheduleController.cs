@@ -6,7 +6,7 @@ using UniDubnaSchedule.Services.Abstractions;
 namespace UniDubnaSchedule.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Api/[controller]")]
 public class BellsScheduleController : ControllerBase
 {
     private readonly IBellsScheduleService _bellsSchedule;

@@ -36,6 +36,8 @@ void ConfigureServices(IServiceCollection services)
     services.AddScoped<ISubjectsService, SubjectsService>();
     services.AddScoped<ITeachersRepository, TeacherRepository>();
     services.AddScoped<ITeacherService, TeacherService>();
+    services.AddScoped<IUsersRepository, UsersRepository>();
+    services.AddScoped<IUsersService, UsersService>();
 }
 
 void ConfigureApplication(WebApplication application)
@@ -60,4 +62,5 @@ ConfigureServices(builder.Services);
 
 var app = builder.Build();
 ConfigureApplication(app);
+
 app.Run();

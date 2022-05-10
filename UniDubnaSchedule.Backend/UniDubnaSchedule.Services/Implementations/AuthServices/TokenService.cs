@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -33,5 +34,19 @@ public static class TokenService
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+    
+    public static RefreshToken GenerateRefreshToken(IConfiguration configuration)
+    {
+        var lifeTimeInDays = configuration.GetSection("JWT:RefreshTokenLifeTimeInDays").Value;
+        
+        var refreshToken = new RefreshToken
+        {
+            Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+            Expires = DateTime.UtcNow.AddDays(int.Parse(lifeTimeInDays)),
+            Created = DateTime.UtcNow
+        };
+
+        return refreshToken;
     }
 }

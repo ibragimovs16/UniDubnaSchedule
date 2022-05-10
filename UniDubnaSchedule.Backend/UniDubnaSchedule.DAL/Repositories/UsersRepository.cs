@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using UniDubnaSchedule.DAL.Interfaces;
+using UniDubnaSchedule.Domain.Enums;
 using UniDubnaSchedule.Domain.Models;
 
 namespace UniDubnaSchedule.DAL.Repositories;
@@ -14,6 +15,16 @@ public class UsersRepository : BaseRepository, IUsersRepository
 
     public async Task<User?> GetByUsernameAsync(string username) =>
         await _db.Users.FirstOrDefaultAsync(user => user.Username == username);
+
+    public async Task<User?> GetByRefreshTokenAsync(string refreshToken) =>
+        await _db.Users.FirstOrDefaultAsync(user => user.RefreshToken == refreshToken);
+
+    public async Task<string> UpdateAsync(User data)
+    {
+        var entity = _db.Users.Update(data);
+        await _db.SaveChangesAsync();
+        return entity.Entity.Username;
+    }
 
     public async Task<string> AddAsync(User data)
     {

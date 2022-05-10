@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using UniDubnaSchedule.Domain.DTOs;
+using UniDubnaSchedule.Domain.Models;
+using UniDubnaSchedule.Services.Abstractions;
 using UniDubnaSchedule.Services.Implementations.AuthServices;
 
 namespace UniDubnaSchedule.Backend.Controllers;
@@ -34,14 +36,30 @@ public class AuthController : ControllerBase
     [HttpPost("Login")]
     public async Task<ActionResult> Login([FromBody] UserDto request)
     {
-        var result = await _authService.Login(request, _configuration);
+        var result = await _authService.Login(request, _configuration, Response.Cookies);
 
-        return new ContentResult()
+        return new ContentResult
         {
             StatusCode = (int) result.StatusCode,
             Content = JsonConvert.SerializeObject(new
             {
-                Statud = result.StatusCode.ToString(),
+                Status = result.StatusCode.ToString(),
+                AccessToken = result.Data
+            })
+        };
+    }
+
+    [HttpPost("RefreshToken")]
+    public async Task<ActionResult> RefreshToken()
+    {
+        var result = await _authService.RefreshToken(Request.Cookies, Response.Cookies);
+
+        return new ContentResult
+        {
+            StatusCode = (int) result.StatusCode,
+            Content = JsonConvert.SerializeObject(new
+            {
+                Status = result.StatusCode.ToString(),
                 AccessToken = result.Data
             })
         };

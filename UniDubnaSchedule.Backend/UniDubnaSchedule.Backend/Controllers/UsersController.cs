@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using UniDubnaSchedule.Domain.DTOs;
 using UniDubnaSchedule.Services.Abstractions;
 
 namespace UniDubnaSchedule.Backend.Controllers;
@@ -19,6 +20,23 @@ public class UsersController : ControllerBase
     public async Task<ActionResult> GetAllUsers()
     {
         var response = await _usersService.GetAllAsync();
+
+        return new ContentResult
+        {
+            StatusCode = (int) response.StatusCode,
+            Content = JsonConvert.SerializeObject(new
+            {
+                Status = response.StatusCode.ToString(),
+                Result = response.Data
+            }),
+            ContentType = "application/json"
+        };
+    }
+
+    [HttpPut("ChangeRole")]
+    public async Task<ActionResult> ChangeRole([FromBody] ChangeRoleDto changeRoleDto)
+    {
+        var response = await _usersService.ChangeRole(changeRoleDto.Username, changeRoleDto.Role);
 
         return new ContentResult
         {

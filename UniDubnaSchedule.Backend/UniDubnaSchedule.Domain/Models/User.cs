@@ -11,4 +11,7 @@ public class User
     public byte[]? PasswordSalt { get; set; }
     public DateTime Registered { get; set; }
     public Roles Role { get; set; }
+    public string? RefreshToken { get; set; } = string.Empty;
+    public DateTime? RefreshTokenCreated { get; set; }
+    public DateTime? RefreshTokenExpires { get; set; }
 }

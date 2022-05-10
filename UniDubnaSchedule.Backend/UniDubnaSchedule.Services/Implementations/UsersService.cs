@@ -1,12 +1,9 @@
 using System.Net;
-using Microsoft.Extensions.Configuration;
 using UniDubnaSchedule.DAL.Interfaces;
-using UniDubnaSchedule.Domain.DTOs;
 using UniDubnaSchedule.Domain.Enums;
 using UniDubnaSchedule.Domain.Models;
 using UniDubnaSchedule.Domain.Response;
 using UniDubnaSchedule.Services.Abstractions;
-using UniDubnaSchedule.Services.Implementations.AuthServices;
 
 namespace UniDubnaSchedule.Services.Implementations;
 
@@ -51,6 +48,35 @@ public class UsersService : IUsersService
         {
             StatusCode = HttpStatusCode.OK,
             Data = "The user has been successfully deleted."
+        };
+    }
+
+    public async Task<BaseResponse<string>> ChangeRole(string username, string role)
+    {
+        var roleWithUpperFirstLetter = role[..1].ToUpper() + role[1..];
+        var isPossibleRole = Enum.TryParse(roleWithUpperFirstLetter, out Roles enumRole);
+
+        if (!isPossibleRole || int.TryParse(role, out _))
+            return new BaseResponse<string>
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = "The specified role does not exist."
+            };
+
+        var currentUser = await _repository.GetByUsernameAsync(username);
+        if (currentUser is null)
+            return new BaseResponse<string>
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = "User not found."
+            };
+        currentUser.Role = enumRole;
+        await _repository.UpdateAsync(currentUser);
+
+        return new BaseResponse<string>
+        {
+            StatusCode = HttpStatusCode.OK,
+            Data = "The changes have been successfully applied."
         };
     }
 
